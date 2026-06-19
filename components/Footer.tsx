@@ -40,7 +40,7 @@ export default function Footer() {
   return (
     <footer className="relative border-t border-white/5 bg-[#0a0a0a]">
       {/* Subtle gradient top edge */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <motion.div
@@ -53,7 +53,7 @@ export default function Footer() {
           {/* Brand column */}
           <motion.div variants={fadeInUp} className="space-y-4">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold text-xs shadow-lg shadow-indigo-500/25">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center text-white font-bold text-xs shadow-lg shadow-red-500/25">
                 {BRAND.initials}
               </div>
               <span className="font-semibold text-white/90">{BRAND.name}</span>
@@ -73,7 +73,7 @@ export default function Footer() {
                   aria-label={label}
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-9 h-9 rounded-lg bg-white/5 hover:bg-indigo-500/20 hover:text-indigo-400 text-white/50 flex items-center justify-center transition-colors"
+                  className="w-9 h-9 rounded-lg bg-white/5 hover:bg-red-500/20 hover:text-red-400 text-white/50 flex items-center justify-center transition-colors"
                 >
                   <Icon size={15} />
                 </motion.a>
@@ -107,18 +107,17 @@ export default function Footer() {
               Get In Touch
             </h3>
             <p className="text-sm text-white/40 leading-relaxed">
-              Open to new opportunities and interesting projects. Let&apos;s
-              build something great together.
+              Open to freelance projects and full-time opportunities.
             </p>
-            <a
+            <motion.a
               href={`mailto:${BRAND.email}`}
-              className="inline-flex items-center gap-2 text-sm text-indigo-400 hover:text-indigo-300 transition-colors group"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-red-500 to-red-700 text-white text-sm font-medium shadow-lg shadow-red-500/25 hover:shadow-red-500/40 transition-shadow"
             >
               <Mail size={14} />
-              <span className="group-hover:underline underline-offset-2">
-                {BRAND.email}
-              </span>
-            </a>
+              {BRAND.email}
+            </motion.a>
           </motion.div>
         </motion.div>
 
@@ -128,15 +127,13 @@ export default function Footer() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="mt-12 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3"
+          className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4"
         >
           <p className="text-xs text-white/25">
             © {year} {BRAND.name}. All rights reserved.
           </p>
-          <p className="text-xs text-white/25 flex items-center gap-1.5">
-            Built with{" "}
-            <Heart size={11} className="text-indigo-400 fill-indigo-400" /> using
-            Next.js & Framer Motion
+          <p className="text-xs text-white/25 flex items-center gap-1">
+            Built with <Heart size={11} className="text-red-400" /> using Next.js & Tailwind CSS
           </p>
         </motion.div>
       </div>

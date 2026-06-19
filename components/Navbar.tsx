@@ -60,7 +60,7 @@ export default function Navbar() {
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
-              className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-indigo-500/25"
+              className="w-9 h-9 rounded-xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-red-500/25"
             >
               {BRAND.initials}
             </motion.div>
@@ -79,7 +79,7 @@ export default function Navbar() {
                 className="relative px-4 py-2 text-sm text-white/60 hover:text-white transition-colors rounded-lg hover:bg-white/5 group"
               >
                 {link.label}
-                <span className="absolute bottom-1 left-4 right-4 h-px bg-indigo-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
+                <span className="absolute bottom-1 left-4 right-4 h-px bg-red-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
               </Link>
             ))}
           </div>
@@ -91,7 +91,7 @@ export default function Navbar() {
               download
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white transition-colors shadow-lg shadow-indigo-500/20"
+              className="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-xl bg-red-600 hover:bg-red-500 text-white transition-colors shadow-lg shadow-red-500/20"
             >
               <Download size={14} />
               Resume
@@ -120,39 +120,28 @@ export default function Navbar() {
             transition={{ duration: 0.25, ease: "easeInOut" }}
             className="md:hidden overflow-hidden bg-[#0f0f0f]/95 backdrop-blur-xl border-b border-white/5"
           >
-            <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-1">
-              {navLinks.map((link, i) => (
-                <motion.div
+            <nav className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-col gap-1">
+              {navLinks.map((link) => (
+                <Link
                   key={link.href}
-                  initial={{ opacity: 0, x: -16 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.06, duration: 0.3 }}
+                  href={resolveHref(link.href)}
+                  onClick={(e) => handleAnchorClick(e, link.href)}
+                  className="px-4 py-3 text-sm text-white/70 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
                 >
-                  <Link
-                    href={resolveHref(link.href)}
-                    onClick={(e) => handleAnchorClick(e, link.href)}
-                    className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/5 rounded-xl transition-colors text-sm font-medium"
-                  >
-                    {link.label}
-                  </Link>
-                </motion.div>
+                  {link.label}
+                </Link>
               ))}
-              <motion.div
-                initial={{ opacity: 0, x: -16 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: navLinks.length * 0.06, duration: 0.3 }}
-                className="pt-2 border-t border-white/5 mt-2"
-              >
+              <div className="pt-2 pb-1">
                 <a
                   href={BRAND.resumeUrl}
                   download
-                  className="flex items-center gap-2 px-4 py-3 text-sm font-medium text-indigo-400 hover:text-indigo-300 transition-colors"
+                  className="flex items-center gap-2 px-4 py-3 text-sm font-medium rounded-xl bg-red-600 hover:bg-red-500 text-white transition-colors"
                 >
                   <Download size={14} />
                   Download Resume
                 </a>
-              </motion.div>
-            </div>
+              </div>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>
